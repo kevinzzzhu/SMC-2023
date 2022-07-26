@@ -16,19 +16,20 @@ portfolio-1:
     PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.pdf'
     ARTIFACT_URL: 'https://gitlab.cecs.anu.edu.au/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/-/jobs/artifacts/main/raw/$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.html?job=portfolio-1'
   script:
-    - pandoc \
-    - --standalone \
-    - --self-contained \
-    - --metadata title="Portfolio 1" \
-    - --metadata author="$CI_PROJECT_NAMESPACE" \
-    - --output=$PORTFOLIO_OUTPUT \
-    - week-2/week-2-reflection.md \
-    - week-3/week-3-reflection.md \
-    - week-4/week-4-reflection.md \
-    - week-5/week-5-reflection.md \
-    - portfolio-1/portfolio-1.md
-    - echo "Your portfolio 1 can be found at this URL"
-    - echo "$ARTIFACT_URL"
+    - |
+      pandoc \
+      --standalone \
+      --self-contained \
+      --metadata title="Portfolio 1" \
+      --metadata author="$CI_PROJECT_NAMESPACE" \
+      --output=$PORTFOLIO_OUTPUT \
+      week-2/week-2-reflection.md \
+      week-3/week-3-reflection.md \
+      week-4/week-4-reflection.md \
+      week-5/week-5-reflection.md \
+      portfolio-1/portfolio-1.md
+      echo "Your portfolio 1 can be found at this URL"
+      echo "$ARTIFACT_URL"
   artifacts:
     paths: 
       - $PORTFOLIO_OUTPUT
@@ -46,19 +47,20 @@ portfolio-2:
     PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.pdf'
     ARTIFACT_URL: 'https://gitlab.cecs.anu.edu.au/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/-/jobs/artifacts/main/raw/$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.html?job=portfolio-2'
   script:
-    - pandoc \
-    - --standalone \
-    - --self-contained \
-    - --metadata title="Portfolio 2" \
-    - --metadata author="$CI_PROJECT_NAMESPACE" \
-    - --output=$PORTFOLIO_OUTPUT \
-    - week-6/week-6-reflection.md \
-    - week-7/week-7-reflection.md \
-    - week-8/week-8-reflection.md \
-    - week-10/week-10-reflection.md \
-    - portfolio-2/portfolio-2.md
-    - echo "Your portfolio 2 can be found at this URL"
-    - echo "$ARTIFACT_URL"
+    - |
+      pandoc \
+      --standalone \
+      --self-contained \
+      --metadata title="Portfolio 2" \
+      --metadata author="$CI_PROJECT_NAMESPACE" \
+      --output=$PORTFOLIO_OUTPUT \
+      week-6/week-6-reflection.md \
+      week-7/week-7-reflection.md \
+      week-8/week-8-reflection.md \
+      week-10/week-10-reflection.md \
+      portfolio-2/portfolio-2.md
+      echo "Your portfolio 2 can be found at this URL"
+      echo "$ARTIFACT_URL"
   artifacts:
     paths: 
       - $PORTFOLIO_OUTPUT
