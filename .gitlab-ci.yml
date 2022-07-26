@@ -1,0 +1,107 @@
+image: comp2300/comp2300-ci:2022.0.6
+
+stages:
+  - build
+  - test
+
+portfolio-1:
+  stage: build
+  image:
+    name: pandoc/core:2.17.1.1-alpine
+    entrypoint: ["/bin/sh", "-c"]
+  tags:
+    - comp2300
+  variables:
+    PORTFOLIO_OUTPUT: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.html'
+    PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.pdf'
+    ARTIFACT_URL: 'https://gitlab.cecs.anu.edu.au/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/-/jobs/artifacts/main/raw/$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.html?job=portfolio-1'
+  script:
+    - pandoc \
+    - --standalone \
+    - --self-contained \
+    - --metadata title="Portfolio 1" \
+    - --metadata author="$CI_PROJECT_NAMESPACE" \
+    - --output=$PORTFOLIO_OUTPUT \
+    - week-2/week-2-reflection.md \
+    - week-3/week-3-reflection.md \
+    - week-4/week-4-reflection.md \
+    - week-5/week-5-reflection.md \
+    - portfolio-1/portfolio-1.md
+    - echo "Your portfolio 1 can be found at this URL"
+    - echo "$ARTIFACT_URL"
+  artifacts:
+    paths: 
+      - $PORTFOLIO_OUTPUT
+  allow_failure: true
+
+portfolio-2:
+  stage: build
+  image:
+    name: pandoc/core:2.17.1.1-alpine
+    entrypoint: ["/bin/sh", "-c"]
+  tags:
+    - comp2300
+  variables:
+    PORTFOLIO_OUTPUT: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.html'
+    PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.pdf'
+    ARTIFACT_URL: 'https://gitlab.cecs.anu.edu.au/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/-/jobs/artifacts/main/raw/$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.html?job=portfolio-2'
+  script:
+    - pandoc \
+    - --standalone \
+    - --self-contained \
+    - --metadata title="Portfolio 2" \
+    - --metadata author="$CI_PROJECT_NAMESPACE" \
+    - --output=$PORTFOLIO_OUTPUT \
+    - week-6/week-6-reflection.md \
+    - week-7/week-7-reflection.md \
+    - week-8/week-8-reflection.md \
+    - week-10/week-10-reflection.md \
+    - portfolio-2/portfolio-2.md
+    - echo "Your portfolio 2 can be found at this URL"
+    - echo "$ARTIFACT_URL"
+  artifacts:
+    paths: 
+      - $PORTFOLIO_OUTPUT
+  allow_failure: true
+
+portfolio-1-wordcount:
+  stage: test
+  tags:
+    - comp2300
+  script:
+    - echo "Word Count:"
+    - var="$(cat portfolio-1/portfolio-1.md | wc -w)"
+    - > 
+      if (( $var > 300)); then
+      exit 0 ;
+      else
+      echo "Your portfolio 1 should be more than 300 words!";
+      exit 1;
+      fi
+
+portfolio-2-wordcount:
+  stage: test
+  tags:
+    - comp2300
+  script:
+    - echo "Word Count:"
+    - var="$(cat portfolio-1/portfolio-2.md | wc -w)"
+    - > 
+      if (( $var > 300)); then
+      exit 0 ;
+      else
+      echo "Your portfolio 2 should be more than 300 words!";
+      exit 1;
+      fi
+
+# pandoc \
+# --standalone \
+# --self-contained \
+# --metadata title="Portfolio 1" \
+# --metadata author="$CI_PROJECT_NAMESPACE" \
+# --output=portfolio-1.pdf \
+# week-2/week-2-reflection.md \
+# week-3/week-3-reflection.md \
+# week-4/week-4-reflection.md \
+# week-5/week-5-reflection.md \
+# portfolio-1/portfolio-1.md
