@@ -7,88 +7,146 @@ stages:
 portfolio-1:
   stage: build
   image:
-    name: pandoc/latex:2.18.0.0-alpine
+    name: charlepm/pandoc-latex-libertine:0.3.0
     entrypoint: ["/bin/sh", "-c"]
   tags:
     - comp2300
   variables:
-    PORTFOLIO_OUTPUT: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.html'
     PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.pdf'
-    ARTIFACT_URL: 'https://gitlab.cecs.anu.edu.au/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/-/jobs/artifacts/main/raw/$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-1.html?job=portfolio-1'
   script:
     - |
-      pandoc \
-      --standalone \
-      --self-contained \
-      --metadata title="Portfolio 1" \
-      --metadata author="$CI_PROJECT_NAMESPACE" \
-      --output=$PORTFOLIO_OUTPUT \
-      week-2/week-2-reflection.md \
-      week-3/week-3-reflection.md \
-      week-4/week-4-reflection.md \
-      week-5/week-5-reflection.md \
-      portfolio-1/portfolio-1.md
+      cp */*.png . || true
+    - |
+      cp */*.jpg . || true
+    - |
+      cp */*.jpeg . || true
     - |
       pandoc \
       --standalone \
       --self-contained \
-      --metadata title="Portfolio 1" \
+      --metadata title="Laptop Ensemble: Portfolio 1" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
+      --metadata date="$(date '+%Y-%m-%d')" \
       --output=$PORTFOLIO_PDF \
+      -V 'geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm' \
+      -V 'papersize: a4' \
+      -V 'pagestyle:headings' \
+      -V 'fontfamily:libertine,sourcecodepro' \
+      -V 'fontsize:11pt' \
       week-2/week-2-reflection.md \
       week-3/week-3-reflection.md \
       week-4/week-4-reflection.md \
       week-5/week-5-reflection.md \
       portfolio-1/portfolio-1.md
-      echo "Your portfolio 1 can be found at this URL"
-      echo "$ARTIFACT_URL"
   artifacts:
     paths: 
-      - $PORTFOLIO_OUTPUT
       - $PORTFOLIO_PDF
   allow_failure: true
 
 portfolio-2:
   stage: build
   image:
-    name: pandoc/latex:2.18.0.0-alpine
+    name: charlepm/pandoc-latex-libertine:0.3.0
     entrypoint: ["/bin/sh", "-c"]
   tags:
     - comp2300
   variables:
-    PORTFOLIO_OUTPUT: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.html'
     PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.pdf'
-    ARTIFACT_URL: 'https://gitlab.cecs.anu.edu.au/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/-/jobs/artifacts/main/raw/$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-portfolio-2.html?job=portfolio-2'
   script:
     - |
-      pandoc \
-      --standalone \
-      --self-contained \
-      --metadata title="Portfolio 2" \
-      --metadata author="$CI_PROJECT_NAMESPACE" \
-      --output=$PORTFOLIO_OUTPUT \
-      week-6/week-6-reflection.md \
-      week-7/week-7-reflection.md \
-      week-8/week-8-reflection.md \
-      week-10/week-10-reflection.md \
-      portfolio-2/portfolio-2.md
+      cp */*.png . || true
+    - |
+      cp */*.jpg . || true
+    - |
+      cp */*.jpeg . || true
     - |
       pandoc \
       --standalone \
       --self-contained \
-      --metadata title="Portfolio 2" \
+      --metadata title="Laptop Ensemble: Portfolio 1" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
+      --metadata date="$(date '+%Y-%m-%d')" \
       --output=$PORTFOLIO_PDF \
+      -V 'geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm' \
+      -V 'papersize: a4' \
+      -V 'pagestyle:headings' \
+      -V 'fontfamily:libertine,sourcecodepro' \
+      -V 'fontsize:11pt' \
       week-6/week-6-reflection.md \
       week-7/week-7-reflection.md \
       week-8/week-8-reflection.md \
       week-10/week-10-reflection.md \
       portfolio-2/portfolio-2.md
-      echo "Your portfolio 2 can be found at this URL"
-      echo "$ARTIFACT_URL"
   artifacts:
     paths: 
-      - $PORTFOLIO_OUTPUT
+      - $PORTFOLIO_PDF
+  allow_failure: true
+
+demo-proposal:
+  stage: build
+  image:
+    name: charlepm/pandoc-latex-libertine:0.3.0
+    entrypoint: ["/bin/sh", "-c"]
+  tags:
+    - comp2300
+  variables:
+    PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-demo.pdf'
+  script:
+    - |
+      cp */*.png . || true
+    - |
+      cp */*.jpg . || true
+    - |
+      cp */*.jpeg . || true
+    - |
+      cd demo-presentation
+      pandoc \
+      --standalone \
+      --self-contained \
+      --metadata title="Laptop Ensemble: Artefact Proposal" \
+      --metadata author="$CI_PROJECT_NAMESPACE" \
+      --metadata date="$(date '+%Y-%m-%d')" \
+      --output=$PORTFOLIO_PDF \
+      -V 'geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm' \
+      -V 'papersize: a4' \
+      -V 'pagestyle:headings' \
+      -V 'fontfamily:libertine,sourcecodepro' \
+      -V 'fontsize:11pt' \
+      lens-artefact-proposal.md
+      mv $PORTFOLIO_PDF ..
+  artifacts:
+    paths: 
+      - $PORTFOLIO_PDF
+  allow_failure: true
+
+final-performance:
+  stage: build
+  image:
+    name: charlepm/pandoc-latex-libertine:0.3.0
+    entrypoint: ["/bin/sh", "-c"]
+  tags:
+    - comp2300
+  variables:
+    PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-final-perf.pdf'
+  script:
+    - |
+      cd final-performance
+      pandoc \
+      --standalone \
+      --self-contained \
+      --metadata title="Laptop Ensemble: Final Performance" \
+      --metadata author="$CI_PROJECT_NAMESPACE" \
+      --metadata date="$(date '+%Y-%m-%d')" \
+      --output=$PORTFOLIO_PDF \
+      -V 'geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm' \
+      -V 'papersize: a4' \
+      -V 'pagestyle:headings' \
+      -V 'fontfamily:libertine,sourcecodepro' \
+      -V 'fontsize:11pt' \
+      README.md
+      mv $PORTFOLIO_PDF ..
+  artifacts:
+    paths: 
       - $PORTFOLIO_PDF
   allow_failure: true
 
