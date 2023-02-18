@@ -23,7 +23,7 @@ portfolio-1:
     - |
       pandoc \
       --standalone \
-      --self-contained \
+      --embed-resources \
       --metadata title="SMC: Portfolio 1" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
@@ -62,7 +62,7 @@ portfolio-2:
     - |
       pandoc \
       --standalone \
-      --self-contained \
+      --embed-resources \
       --metadata title="SMC: Portfolio 1" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
@@ -102,7 +102,7 @@ solo-performance:
       cd solo-performance
       pandoc \
       --standalone \
-      --self-contained \
+      --embed-resources \
       --metadata title="SMC: Solo Performance" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
@@ -133,7 +133,7 @@ final-performance:
       cd lens-performance
       pandoc \
       --standalone \
-      --self-contained \
+      --embed-resources \
       --metadata title="LENS Performance" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
