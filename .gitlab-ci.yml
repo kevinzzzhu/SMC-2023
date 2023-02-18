@@ -63,7 +63,7 @@ portfolio-2:
       pandoc \
       --standalone \
       --embed-resources \
-      --metadata title="SMC: Portfolio 1" \
+      --metadata title="SMC: Portfolio 2" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
       --output=$PORTFOLIO_PDF \
@@ -134,7 +134,7 @@ final-performance:
       pandoc \
       --standalone \
       --embed-resources \
-      --metadata title="LENS Performance" \
+      --metadata title="SMC: LENS Performance" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
       --output=$PORTFOLIO_PDF \
