@@ -90,7 +90,7 @@ solo-performance:
   tags:
     - comp2300
   variables:
-    PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-demo.pdf'
+    PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-solo-perf.pdf'
   script:
     - |
       cp */*.png . || true
