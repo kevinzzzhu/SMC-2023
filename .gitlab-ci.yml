@@ -73,8 +73,8 @@ portfolio-2:
       -V 'fontfamily:libertine,sourcecodepro' \
       -V 'fontsize:11pt' \
       week-6/week-6-reflection.md \
-      week-7/week-7-reflection.md \
       week-8/week-8-reflection.md \
+      week-9/week-9-reflection.md \
       week-10/week-10-reflection.md \
       portfolio-2/portfolio-2.md
   artifacts:
@@ -82,7 +82,7 @@ portfolio-2:
       - $PORTFOLIO_PDF
   allow_failure: true
 
-demo-proposal:
+solo-performance:
   stage: build
   image:
     name: charlepm/pandoc-latex-libertine:0.3.0
@@ -99,11 +99,11 @@ demo-proposal:
     - |
       cp */*.jpeg . || true
     - |
-      cd demo-presentation
+      cd solo-performance
       pandoc \
       --standalone \
       --self-contained \
-      --metadata title="Laptop Ensemble: Artefact Proposal" \
+      --metadata title="SMC: Solo Performance" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
       --output=$PORTFOLIO_PDF \
@@ -112,7 +112,7 @@ demo-proposal:
       -V 'pagestyle:headings' \
       -V 'fontfamily:libertine,sourcecodepro' \
       -V 'fontsize:11pt' \
-      lens-artefact-proposal.md
+      solo-performance-notes.md
       mv $PORTFOLIO_PDF ..
   artifacts:
     paths: 
@@ -130,11 +130,11 @@ final-performance:
     PORTFOLIO_PDF: '$CI_PROJECT_NAME-$CI_PROJECT_NAMESPACE-final-perf.pdf'
   script:
     - |
-      cd final-performance
+      cd lens-performance
       pandoc \
       --standalone \
       --self-contained \
-      --metadata title="Laptop Ensemble: Final Performance" \
+      --metadata title="LENS Performance" \
       --metadata author="$CI_PROJECT_NAMESPACE" \
       --metadata date="$(date '+%Y-%m-%d')" \
       --output=$PORTFOLIO_PDF \
@@ -143,7 +143,7 @@ final-performance:
       -V 'pagestyle:headings' \
       -V 'fontfamily:libertine,sourcecodepro' \
       -V 'fontsize:11pt' \
-      README.md
+      lens-performance-notes.md
       mv $PORTFOLIO_PDF ..
   artifacts:
     paths: 

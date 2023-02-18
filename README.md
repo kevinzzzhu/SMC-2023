@@ -1,8 +1,10 @@
-# Laptop Ensemble: Assessment Submission Repository
+# Sound and Music Computing: Assessment Submission Repository
 
 <https://comp.anu.edu.au/courses/laptop-ensemble/assessments/>
 
-If you're a student in Laptop Ensemble, there are a few things you need to do to get started.
+This repository is to help you organise your code, patches, and reflections during the semester. You **must** use a fork of this repository to generate the PDF files needed to submit assessment items.
+
+If you're a student in Sound and Music Computing, there are a few things you need to do to get started.
 
 ## Once-off
 
