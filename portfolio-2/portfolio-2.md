@@ -4,8 +4,8 @@ name:
 uid: 
 ---
 
-## Portfolio 2 Discussion
+# Portfolio 2 Discussion
 
 _your content goes here_
 
-### References
+## References

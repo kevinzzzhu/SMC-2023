@@ -13,9 +13,11 @@ If you're a student in Laptop Ensemble, there are a few things you need to do to
 
 ## Every week
 
-1. add your diary videos & reflections to the relevant `week-N` folders 
+1. add your diary reflections to the relevant `week-N` folders 
 
 2. commit & **push** them to GitLab
+
+3. add your diary video to the `diary-week-N` folder on Teams.
 
 ## For the assessment items
 
