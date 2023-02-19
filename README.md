@@ -6,7 +6,7 @@ This repository is to help you organise your code, patches, and reflections duri
 
 If you're a student in Sound and Music Computing, there are a few things you need to do to get started.
 
-## Once-off
+## Once-off (workshop 1)
 
 1. fork this project to your own "uid" [GitLab](https://gitlab.cecs.anu.edu.au/)
    account
@@ -21,16 +21,22 @@ If you're a student in Sound and Music Computing, there are a few things you nee
 
 3. add your diary video to the `diary-week-N` folder on Teams.
 
-## For the assessment items
+## For each assessment item
 
-1. follow the instructions on the assessment page to see which files you need to update
+1. follow the instructions on the [assessment page](https://comp.anu.edu.au/courses/laptop-ensemble/assessments/) to see which files you need to update, and the process for submission 
 
-2. commit & **push** them to GitLab
+2. commit and **push** your changes to GitLab
 
-3. read the assessment instructions again to check and ask for help if you need it :-)
+3. wait for the CI/CD jobs to complete (click CI/CD and then Jobs in the left sidebar)
 
-_Note_: you can push as many times as you like---your last push before the due
-date/time counts as your submission. So push early, push often, and you can
+4. download the artefact (PDF file) for the assessment item you are working on.
+
+5. check if it looks right, if not go back to step 1.
+
+6. submit the PDF artefact as documented in the assessment instructions (probably on Wattle)
+
+_Note_: you can push as many times as you like and all versions are backed up on GitLab with 
+the time and date that you pushed it. Push early, push often, and you can
 chill out when you spill coffee on your laptop an hour before the submission
 deadline :)
 
