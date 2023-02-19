@@ -172,7 +172,7 @@ portfolio-2-wordcount:
     - comp2300
   script:
     - echo "Word Count:"
-    - var="$(cat portfolio-1/portfolio-2.md | wc -w)"
+    - var="$(cat portfolio-2/portfolio-2.md | wc -w)"
     - > 
       if (( $var > 300)); then
       exit 0 ;
