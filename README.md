@@ -49,3 +49,12 @@ through GitLab's drag-and-drop web interface if you want to).
 
 If you have any questions/problems, ask us on Teams _ASAP_ so we can help you
 out before the deadline.
+
+## Note on PDF generation
+
+This repository automatically generates PDF files from multiple markdown files to create the 
+submission version of your portfolio and other assessment documents.
+
+This is controlled by scripts in the `.gitlab-ci.yml` file. Sometimes this process doesn't work
+the way you might expect so if you notice something wrong or unexpected in the artefact PDF, ask
+on the course Team.
