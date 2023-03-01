@@ -26,3 +26,6 @@ I utilized Array, Select, and Metro to write different parts of the climax so th
 - comment: Used a little bit code because I learn to use array from these videos
     - url: https://www.youtube.com/watch?v=p42GqoTmaUg&t=396s
     - url: https://www.youtube.com/watch?v=oLsL6rLRGGM
+
+- comment: Noise code inspired by a reply
+    - url: https://forum.pdpatchrepo.info/topic/2218/noise-osc

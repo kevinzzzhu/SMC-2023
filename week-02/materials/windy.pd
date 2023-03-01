@@ -1,0 +1,16 @@
+#N canvas 573 138 403 205 12;
+#X obj 61 26 noise~;
+#X obj 62 75 *~;
+#X obj 62 121 osc~;
+#X obj 63 144 dac~;
+#X obj 83 53 hsl 128 15 2000 20000 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 4400 1;
+#X text 8 167 Hardoff: "it's like the sound of putting a t-shirt over
+your head in the shower 1000 times.";
+#X obj 62 99 lop~ 30;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 2 0 3 1;
+#X connect 4 0 1 1;
+#X connect 6 0 2 0;
