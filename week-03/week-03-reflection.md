@@ -9,11 +9,11 @@ website: https://comp.anu.edu.au/courses/laptop-ensemble/workshops/03-sampling-1
 
 This week I focused on implementing multiple audio tracks, including audio that I sampled during the performance, and using delay to play them back accordingly. My inspiration for this piece came from "North Memphis" by Pharmacist, a fast-paced Phonk music track.
 
-![ ALT](./materials/north-memphis.png)
+![ ALT](north-memphis.png)
 
 The theme reminded me of enjoying Ed Sheeran's live loop pedal performances, where he creates ensemble performances by recording various instruments and adding echo effects. It is like a band of 'himself'.
 
-![ ALT](./materials/ed.png)
+![ ALT](ed.png)
 
 ## How?
 I started simulating what Ed Sheeran was doing, so I managed to learn how to record sounds manually in Puredata, and luckily there is a tutorial for that.
@@ -24,7 +24,7 @@ The biggest challenge I faced was not being able to simulate drum sounds and ach
 
 I should also find a method to switch between different channels for recording the samples instead of changing them manually.
 
-![ ALT](./materials/diary2.png)
+![ ALT](diary2.png)
 
 ### **Problems unsolved**
 - Swap between different channels.

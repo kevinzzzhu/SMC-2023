@@ -18,7 +18,7 @@ After hanging my mind, I decided to slowly accelerate the metro and change the t
 The small envelope of the first beat and the big envelop of the third beat in the piece form a contrast. I deliberately increased the release phase of the small envelope and reduced its volume, while the larger Envelope I played instantaneously with three osc~ with delays to simulate echo, and intentionally shortened the release phase and expanded the sustenance phase. The second and fourth beats are also related. If they are dropped together (fourth then second beat), a complete envelope can be obtained.
 
 
-![ ALT](./materials/diary3.png)
+![ ALT](diary3.png)
 
 ### **Problems unsolved**
 - The need for music understanding.
