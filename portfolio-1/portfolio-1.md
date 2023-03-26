@@ -1,7 +1,7 @@
 ---
 website: https://comp.anu.edu.au/courses/laptop-ensemble/assessments/portfolio/
-name: 
-uid: 
+name: Kevin Zhu
+uid: u7338066
 ---
 
 # Portfolio 1 Discussion
