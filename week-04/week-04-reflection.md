@@ -4,14 +4,26 @@ website: https://comp.anu.edu.au/courses/laptop-ensemble/workshops/04-envelopes-
 
 # Week 4 reflection
 
-For this week’s dairy, since the request asking for a single source piece, and from me understand I shouldn’t be doing a piece that is complicated pieces. After hanging my mind, I decided to gradually accelerate the metro and try to change the tone of the envelope in play, so that the work was less monotonous, and later added to playing drum. The piece is inspired by jazz songs, and I admire the slow rhythm it has, so I would like to create a similar one myself, which also suits this week’s theme. I use spigot as the main controller, opening a switch-rich work as the work goes on. The small envelope of the first beat and the big envelop of the third beat in the piece form a contrast. I deliberately increased the release phase of the small envelope and reduced the volume, while the larger Envelope I played instantaneously with three osc with delays to simulate echo, and intentionally shortened the release phase and expanded the sustenance phase. The second and fourth beats are also related. If they are dropped together (fourth then second beat), a complete envelope can be obtained. 
+## Why this piece?
+*Requirement: With a single sound source, create a piece using envelopes.*
+
+For this week’s dairy, from my understanding I shouldn’t be doing a piece that is complicated. There should be only one sound source playing at a time.
+
+The piece is inspired by jazz songs, and I admire the slow rhythm it has, so I would like to create one myself. I knew that this time it wouldn't be 'good' because it was the first time totally 'my piece' from scratch, including the composition.
+
+## How?
+
+After hanging my mind, I decided to slowly accelerate the metro and change the tone of the envelope in play. I use spigots as the main controller, turn on the switches to enrich the piece as it progresses. I originally planned to add more spigots to increase layers when performing. But due to the lack of music theory, I did not know what to add.
+
+The small envelope of the first beat and the big envelop of the third beat in the piece form a contrast. I deliberately increased the release phase of the small envelope and reduced its volume, while the larger Envelope I played instantaneously with three osc~ with delays to simulate echo, and intentionally shortened the release phase and expanded the sustenance phase. The second and fourth beats are also related. If they are dropped together (fourth then second beat), a complete envelope can be obtained.
+
+
+![ ALT](./materials/diary3.png)
+
+### **Problems unsolved**
+- The need for music understanding.
 
 ## References
-- comment: Inspired by this
-    - url: https://battleofthebits.org/arena/Entry/click-.point+via+rtsampler/33762/#
+1. argarak (battle of the bits user). 2020. click-.point via rtsampler. Inspired by this. Retrieved from: https://battleofthebits.org/arena/Entry/click-.point+via+rtsampler/33762/#
 
-- comment: Sound used from the resources given by Charles
-    - url: null
-
-- comment: Inspired and learnt and borrowed few codes from the resources given by Charles
-    - url: null
+2. Borrowed codes from the resources given by Charles. Retrieved from: https://github.com/cpmpercussion/ComputerMusicIntro

@@ -24,6 +24,8 @@ The biggest challenge I faced was not being able to simulate drum sounds and ach
 
 I should also find a method to switch between different channels for recording the samples instead of changing them manually.
 
+![ ALT](./materials/diary2.png)
+
 ### **Problems unsolved**
 - Swap between different channels.
 - Simulate drum sound.
