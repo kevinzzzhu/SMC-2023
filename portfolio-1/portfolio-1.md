@@ -80,3 +80,5 @@ As well as searching the internet for relevant puredata material, including but 
 4. Learn from the example resources given by Charles. Retrieved from: https://github.com/cpmpercussion/ComputerMusicIntro
 
 5. SMC2023. 2023. Get inspired by all the classmates, viewed almost everyone's video each week. Retrieved from: https://anu365.sharepoint.com/sites/SMC2023
+
+6. Gem issues. Get helped even though I still cannot install it. Retrieved from: https://github.com/umlaeute/Gem/issues?q=
