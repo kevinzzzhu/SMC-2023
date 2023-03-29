@@ -4,6 +4,6 @@ website: https://comp.anu.edu.au/courses/laptop-ensemble/workshops/06-interfaces
 
 # Week 6 reflection
 
-_your content goes here_
+Too many words to reflect this week, I will finish this after the exam (forgive me).
 
 ## References
