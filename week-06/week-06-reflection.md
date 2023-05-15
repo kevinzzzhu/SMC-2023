@@ -10,7 +10,7 @@ Connecting the Microbit required several apps as bridges, and I had to go to the
 The Gem animations required many parameters, so I decided to use various randomizations to react to each beat of the music. 
 ![ Screenshot of the randoms](random.png)
 Finally, one of the biggest challenges was understanding the original author's code. After asking the author and understanding their intentions, I finally grasped the overall logic of the patch and come up with this piece.
-![ Screenshot of week 6](screenshot.png)
+![ Screenshot of week 6](screenshot-week6.png)
 
 ## References
 1. Unkown. 2020. How do I play a MIDI instrument on the micro:bit. https://support.microbit.org/support/solutions/articles 19000053392-how-do-i-play-a-midi-instrument-on-the-micro-bit

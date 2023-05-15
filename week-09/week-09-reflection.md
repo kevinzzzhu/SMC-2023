@@ -9,7 +9,7 @@ In this group diary project, we had multiple meetings and discussions to create 
 As we progressed, we tried out Gibber in our meetings and fine-tuned our coordination. We even managed to crash seven rooms in the process! Finally, we scheduled a meeting to plan the performance's order and worked on it in five recording sessions in a library room.
 ![Chord Progression](chordprogression.png)
 Overall, this project was a great learning experience in collaborating with others and developing our musical skills. We faced many challenges along the way, but we overcame them with determination and teamwork. I enjoyed working with my group members and look forward to collaborate with them again in the final LENS.
-![ Screenshot of week 9](screenshot.png)
+![ Screenshot of week 9](screenshot-week9.png)
 
 ## References
 1. r/guitarlessons forum. 2020. How to create leads from chords?. Retrieved from: https://www.reddit.com/r/guitarlessons/comments/gzh1cp/how_to_create_leads_from_chords/

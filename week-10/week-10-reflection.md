@@ -9,9 +9,9 @@ For my final project, I decided to create a game that I really enjoy playing cal
 During the workshop and team meetings, I discussed and decided on each person's role and collaboration in detail. However, many parts of the project are still unfinished. The biggest challenge for me has been synchronizing the visuals and music while allowing for player interaction with the visuals.
 ![Topology](topology.png)
 In addition, I have left a lot of flexibility in every part of the performance for each member. Everyone can play in their style and code lively to change the piece but should all fit the theme planned.
-![ Screenshot of week 10 (Part 1)](screenshot1.png)
-![ Screenshot of week 10 (Part 2)](screenshot2.png)
-![ Screenshot of week 10 (Part 3)](screenshot3.png)
+![ Screenshot of week 10 (Part 1)](screenshot1-week10.png)
+![ Screenshot of week 10 (Part 2)](screenshot2-week10.png)
+![ Screenshot of week 10 (Part 3)](screenshot3-week10.png)
 ## References
 1. Nick Robinson (Youtube user). 2019. 10 Minutes of TETRIS EFFECT Music and Gameplay. Inspired by this game. Retrieved from: https://www.youtube.com/watch?v=urbLIyd-VsQ&t=412s
 
