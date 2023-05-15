@@ -1,0 +1,72 @@
+lead = Monosynth('arpy')
+lead.fx.add( Distortion({ pregain:1.5, postgain:1 }) )
+lead.pan.seq( [0.5, 0.3, 0.1, 0, 0.5, 0.7, 0.9, 1], 1/4 )
+lead.gain.fade(0, 0.6, 16)
+lead.attack = 0.005
+lead.Q = 0.4
+lead.decay = 0.4
+
+lead.note.tidal( '<3 6 4 3> <4 5 5 5> <3 4 4 3> ~' )
+
+lead.note.tidal( '<3 4 2 4> <5 6 4 7> <3 5 6 5> ~' )
+
+lead.note.tidal( '<5 7 4 5> <6 8 5 4> <5 5 3 7> ~' )
+
+lead.note.tidal( '<7 9 4 3> <8 5 5 5> <7 4 4 6> ~' )
+lead.stop()
+
+let randomNotes = [];
+randomNotes.push([3, 5, 7][Math.floor(Math.random() * 3)]);
+randomNotes.push([2, 3, 4, 5, 6, 7, 8][Math.floor(Math.random() * 7)]);
+randomNotes.push([2, 3, 4, 5, 6, 7, 8][Math.floor(Math.random() * 7)]);
+randomNotes.push(0);
+randomNotes.push([1, 4, 6][Math.floor(Math.random() * 3)]);
+randomNotes.push([0, 1, 2, 3, 4, 5, 6, 7][Math.floor(Math.random() * 8)]);
+randomNotes.push([0, 1, 2, 3, 4, 5, 6, 7][Math.floor(Math.random() * 8)]);
+randomNotes.push(0);
+randomNotes.push([2, 4, 6][Math.floor(Math.random() * 3)]);
+randomNotes.push([1, 2, 3, 4, 5, 6, 7][Math.floor(Math.random() * 7)]);
+randomNotes.push([1, 2, 3, 4, 5, 6, 7][Math.floor(Math.random() * 7)]);
+randomNotes.push(0);
+randomNotes.push([2, 5, 6][Math.floor(Math.random() * 3)]);
+randomNotes.push([1, 2, 3, 4, 5, 6, 7, 8][Math.floor(Math.random() * 8)]);
+randomNotes.push([1, 2, 3, 4, 5, 6, 7, 8][Math.floor(Math.random() * 8)]);
+randomNotes.push(0);
+console.log(randomNotes);
+lead.note.seq(randomNotes, 1/4)
+lead.loudness.seq([1, 1, 1, 0], 1/4)
+
+lead.loudness.fade(null, 0, 4)
+
+lead2 = Synth('brass.short')
+lead2.note.seq( notes = [3, 4, 3, 0, 6, 5, 4, 0, 4, 5, 4, 0, 3, 5, 3, 0], 1/8 )
+lead2.stop()
+
+notes.range(0, 3)
+notes.range(0, 7)
+notes.range(0, 15)
+
+notes.rotate( 1 ) 
+notes.rotate( -1 )
+
+notes.transpose( -7 )
+
+syn = PolyConga()
+syn.note.seq( 0, 1 )
+syn.note.seq( 2, 1/2, 1 ) 
+syn.note.seq( 3, 1/3, 2 ) 
+syn.note.seq( 5, 1/7, 3 )
+syn.stop()
+
+k = Kick('tight')
+k.trigger.seq( 1, Euclid(5, 8) )
+
+c = Clave()
+c.trigger.seq( 0.5, Euclid(3, 8) )
+
+h = Hat({ decay:.0125 })
+h.trigger.seq( [1,.5], 1/8, 0, 1/2 )
+
+c.stop()
+k.stop()
+h.stop()

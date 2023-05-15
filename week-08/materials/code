@@ -1,0 +1,81 @@
+Clock.bpm = 120
+
+// Seventh
+bass = Monosynth('bass') 
+bass.note.seq( [1, 5, 6, 3, 4, 1, 2, 5], 1/4 ) 
+bass.gain = 0.3
+bass.pan.seq( [0.5, 0.7, 0.9, 1, 0.5, 0.3, 0.1, 0 ], 1/4 )
+bass.Q = gen( 0.5 + cycle(0.1) * 0.49 )
+bass.cutoff = gen( 0.5 + cycle(0.07) * 0.45 ) 
+
+lead = Monosynth('lead') 
+lead.note.seq( [1, 2, 3, 4], 1 ) 
+lead.gain = 0.15
+
+bass.stop()
+lead.stop()
+
+synth = Synth('square.bass') 
+synth.note.seq( p = [2, 4, 2, 4, 3, 5, 3, 5], 1/8 )
+synth.gain = 1.5
+synth.pan.seq( [0.5, 0.3, 0.1, 0, 0.5, 0.7, 0.9, 1], 1/4 )
+
+// Nineth
+p.transpose.seq( 1, 1 )
+p = [2, 5, 4, 1, 4, 3, 2, 1]
+p.reset.seq( 1, 2 )
+
+// Eighth
+verb =  Reverb( 'space' ).bus()
+delay = Delay( '1/3' ).bus().connect( verb, .1 )
+perc = FM[3]( 'perc' )
+  .connect( delay, .65 ).connect( verb, .35 )
+  .spread(.975)
+  .note.seq( sine( btof(2),1,3 ), 1/4,  0 )
+  .note.seq( sine( btof(4),2,4 ), 1/16, 1 )
+  .note.seq( sine( btof(6),3,5 ), 1/8,  2 )
+  .loudness.seq( sine(4.33,.35,.7)  )
+	.gain = 0.05
+
+// First
+k = Kick('tight')
+k.trigger.seq( 1, e = Euclid(5, 8) )
+
+// Second
+c = Clave()
+c.trigger.seq( 0.5, Euclid(3, 8) )
+
+// Third
+d = Drums()
+d.fx.add( Distortion({ pregain:1.5, postgain:1 }) )
+d.tidal('kd [kd, sd] kd [kd, sd]')
+
+// Fourth
+f = FM('glockenspiel.short')
+f.note.tidal( '0*2 2*2 <4 5> [7 8]' )
+
+// Fifth
+h = Hat({ decay:.0125 })
+h.trigger.seq( [1,.5], 1/8, 0, 1/2 )
+h.fx.add( Distortion({ pregain:100, postgain:.1 }) )
+
+// Sixth
+b = Julia().render()
+  .scale(2)
+  .fold.seq( [1, 2, 3, 4, 5], 1/4 )
+
+lead.decay.seq( [1/32, 1/16, 1/8], 1/4 )
+
+e.rotate.seq( 1, 1 )
+
+// Ending
+bass.gain.fade( null, 0, 4 )
+lead.gain.fade( null, 0, 4 )
+synth.gain.fade( null, 0, 4 )
+lead.gain.fade( null, 0, 4 )
+
+k.stop()
+c.stop()
+d.stop()
+f.stop()
+h.stop()
