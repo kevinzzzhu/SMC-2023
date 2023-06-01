@@ -74,7 +74,7 @@ It's worth noting that if the Blocks are accidentally stacked high during the pe
 
 
 # References
-1. ΔNDR0M3DΔ. Unknown. (CC BY-NC-SA 4.0). Retrieved from: https://hydra.ojack.xyz/?sketch_id=OH0LaTojSWiUI3p4
+1. NDR0M3D. Unknown. (CC BY-NC-SA 4.0). Retrieved from: https://hydra.ojack.xyz/?sketch_id=OH0LaTojSWiUI3p4
 
 2. DUNKNOWNUSER. Unknown. (CC BY-NC-SA 4.0). Retrieved from: https://hydra.ojack.xyz/?sketch_id=fdijCm5ZnGBBke84
 
