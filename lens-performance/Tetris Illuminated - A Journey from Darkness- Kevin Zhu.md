@@ -45,12 +45,14 @@ The performance structure is a poignant metaphor for the experience of a blind p
 
 # Files and Resources
 ## Hardware
-- One Micro:bit
-- 4 Laptops with internet
+- One Micro:bit --- To control the game
+
+- 4 Laptops with internet --- To use Gabber
 ## Software
-- Gibber
-- Puredata
-- websocket.py (Use **ls /dev/cu.*** to check which serial port is connected, and run **python websocket.py** in the terminal inside the directory.)
+- Gibber --- Where the music and visualization comes out
+- Puredata --- Where the music comes out
+- websocket.py (Use **ls /dev/cu.*** to check which serial port is connected, and run **python websocket.py** in the terminal inside the directory.) --- To connect Gibber with Micro:bit
+
 - Member1-Visualization (Copy-Paste to Gabber)
 - Member2-Drum, Kick, Clave, Hat (Copy-Paste to Gabber)
 - Member3-Lead, Chord, Bass (Copy-Paste to Gabber)
