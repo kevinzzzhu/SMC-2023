@@ -1,0 +1,68 @@
+// Preset
+
+// Instruments (Fixed during the performance, but I'll be super happy if you can add new instruments!)
+kick = Kick('tight')
+clave = Clave()
+hat = Hat('short')
+clap = Clap()
+snare = Snare('snappy')
+drum = Drums('earshred')
+edrum = EDrums('short')
+
+// Effects
+revDrum = Reverb('space').bus()
+chrDrum = Chorus('lush').bus()
+flgDrum = Flanger('moderate').bus()
+disDrum = Distortion('earshred').bus()
+delDrum = Delay('1/3').bus().connect(revDrum,.2)
+
+// Connections (Configurable! Your turn)
+drum.connect(revDrum, 0.2)
+drum.connect(chrDrum, 0.2)
+drum.connect(flgDrum, 0.2)
+drum.connect(disDrum, 0.2)
+drum.connect(delDrum, 0.2)
+
+kick.gain.fade(null, 0, 4)
+clave.gain.fade(null, 0, 4)
+hat.gain.fade(null, 0, 4)
+clap.gain.fade(null, 0, 4)
+snare.gain.fade(null, 0, 4)
+drum.gain.fade(null, 0, 4)
+edrum.gain.fade(null, 0, 4)
+
+// Section 1 (When first line gets eliminated)
+drum.tidal('ch ch ch ch')
+kick.trigger.seq( 1, Euclid(5, 8) )
+
+// Section 2
+kick.trigger.seq( [1, 0, 0.25, 0.25, 0.5, 0, 0.5, 0, 0.75, 0, 0.25, 0.25, 0.5, 0, 0.5, 0], 1/16 )
+kick.trigger.seq( 1, e = Euclid(5, 8) )
+clave.trigger.seq( 0.5, Euclid(3, 8) )
+hat.trigger.seq( [1,.5], 1/8, 0, 1/2 )
+clap.trigger.seq(0.5, Euclid(3, 8) )
+snare.trigger.seq(0.5, Euclid(3, 8) )
+edrum.tidal('kd sd ~ sd kd sd*2 sd sd')
+drum.tidal('kd kd kd ~ sd ~ sd ~')
+drum.tidal('kd oh*2 sd sd kd sd sd sd')
+drum.tidal('kd sd ~ sd kd sd*2 sd sd')
+
+// Section 3
+drum.tidal('[kd sd]' )
+drum.tidal('kd ~ kd ~ ~ ~ ~ ~')
+drum.tidal('kd ~ kd ~ sd ~ ~ ~')
+drum.tidal('kd ~ kd kd ~ sd ~ ~')
+drum.tidal('kd ~ kd ~ ~ sd sd ~')
+drum.tidal('kd kd sd sd ~ ~ ~ oh')
+drum.tidal('kd ~ oh sd kd sd ~ sd ~')
+drum.tidal('kd ~ sd ~ kd sd sd sd')
+
+// Section 4
+drum.tidal('kd sd ~ sd kd sd*2 sd sd')
+drum.tidal('kd sd ~ ~ kd sd ~ sd')
+drum.tidal('kd ~ ~ ~ kd ~ ~ ~')
+
+// Section 5
+drum.tidal('kd ~ ch ~ kd ~ sd ~')
+kick.trigger.seq( [1, 0, 0.25, 0.25, 0.5, 0, 0.5, 0, 0.75, 0, 0.25, 0.25, 0.5, 0, 0.5, 0], 1/16 )
+hat.trigger.seq( [0.5, 0.75, 1, 0.75].rnd(), [1/8, 1/4, 1/16].rnd() )
