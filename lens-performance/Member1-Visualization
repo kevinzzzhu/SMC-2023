@@ -1,24 +1,124 @@
-// Adaptive Music: Similar to Tetris: Effect, you can dynamically change the music based on gameplay events.
-// For example, as the game progresses and the player achieves higher scores or reaches certain milestones, *****
-// you can modify the tempo, add new layers of instrumentation, or introduce more complex musical patterns. *****
-// This adaptive approach can enhance the overall experience and create a sense of progression.
+// =======================================BG Visual=================================================
+// Dark chaos====================================================================== Level 2
+voronoi(350,0.15)
+  	.modulateScale(osc(50).rotate(Math.sin(time)),.5)
+  	.thresh(.8)
+.scale(()=>a.fft[3]-8).color(1,1,1)
+	.modulateRotate(osc(),.4)
+  	.diff(src(o0).scale(1.8))
+	.modulateScale(osc(2).modulateRotate(o0,.74))
+	.diff(src(o0).rotate([-.012,.01,-.002,0]).scrollY(0,[-1/199800,0].fast(0.7)))
+	.out()
 
-// Generative Music: Utilize the capabilities of Gibber and Puredata to generate music algorithmically. *****
-// Experiment with different algorithms to create evolving melodies, harmonies, and rhythms.
-// You can also link the music generation to game events, such as clearing lines or achieving combos, *****
-// to generate unique musical sequences in real-time.
+// Dark lights glowing fast======================================================== Level 3
+level3Bird.trigger(1)
+shape([4,5,6].fast(0.1).smooth(1),0.000001,[0.2,0.7].smooth(1))
+.color(0.2,0.4,0.3)
+.scrollX(()=>Math.sin(time*0.27))
+.add(
+  shape([4,5,6].fast(0.1).smooth(1),0.000001,[0.2,0.7,0.5,0.3].smooth(1))
+  .color(0.6,0.2,0.5)
+  .scrollY(0.35)
+  .scrollX(()=>Math.sin(time*0.33)))
+.add(
+  shape([4,5,6].fast(0.1).smooth(1),0.000001,[0.2,0.7,0.3].smooth(1))
+  .color(0.2,0.4,0.6)
+  .scrollY(-0.35)
+  .scrollX(()=>Math.sin(time*0.41)*-1))
+.add(
+      src(o0).shift(0.001,0.01,0.001)
+      .scrollX([0.05,-0.05].fast(0.1).smooth(1))
+      .scale([1.05,0.9].fast(0.3).smooth(1),[1.05,0.9,1].fast(0.29).smooth(1))
+      ,0.85)
+.modulate(voronoi(10,2,2))
+.out()
 
-// Visualization: Create visual elements that synchronize with the music.
-// For example, you can generate graphics or animations that react to different sound parameters, such as frequency or volume. *****
-// These visualizations can enhance the overall experience and create a more immersive performance.
+// Colorful mouse=================================================================== Level 5
+osc(8,-0.5, 1).color(-1.5, -1.5, -1.5).blend(o0)
+  .rotate(-0.5, -0.5)
+  .modulate(shape(4)
+            .rotate(3, 0.5)
+            .scale(2)
+            .repeatX(2, 2)
+            .modulate(o0, () => mouse.x * 0.0005)
+            .repeatY(2, 2)).out(o0)
 
+// Slow white dark snow============================================================= Level 7
+voronoi(50,1)
+  .luma(0.5).add(shape(1,1).luma(1))
+  .modulate(osc(-1000,-1)
+            .modulate(osc().luma()))
+  .blend(o0)
+  .blend(o0)
+  .blend(o0)
+  .blend(o0)
+  .out()
+
+// =======================================Configure=================================================
+this.tetris.pause = true;
+this.tetris.pause = false;
+this.tetris.restart = true;
+solid().out(o0)
+
+moveSoundStage1Change1.note(1)
+
+// Level 5
+level5Seagull.trigger(1)
+level5Can.trigger(1)
+level5Water.trigger(1)
+
+// =======================================FG Visual=================================================
+verb = Reverb( 'space' ).bus()
+delay = Delay( '1/3' ).bus()
 use( 'hydra' ).then( init => init() )
 use ( 'p5' )
 // Sound setup
-kickMove = Kick('tight');
-hatTransform = Hat();
-claveNew = Clave();
-clapEliminated = Clap();
+// MoveSound (Left and Right)
+moveSoundStage1Change1 = Synth('square.perc')
+  .connect( verb, 1 )
+  .fx.add(
+    Distortion('crunch'),
+    Delay({ time:1/16, feedback:.5 })
+  )
+moveSoundStage1Change1.gain = 0.1
+moveSoundStage1Change2 = Synth('bleep')
+  .connect( verb, 1 )
+  .fx.add(
+    Distortion('crunch'),
+    Delay({ time:1/8, feedback:.5 })
+  )
+moveSoundStage1Change2.gain = 0.1
+moveSoundStage1Change3 = Synth('bleep.echo')
+  .connect( verb, 1 )
+  .fx.add(
+    Distortion('earshred'),
+    Delay({ time:1/8, feedback:.01 })
+  )
+moveSoundStage1Change3.gain = 0.1
+moveSoundStage1Change4 = Synth('pwm.squeak')
+  .connect( verb, 1 )
+  .fx.add(
+    Distortion('earshred'),
+    Delay({ time:1/8, feedback:.5 })
+  )
+moveSoundStage1Change4.gain = 0.1
+// Transform Sound (Up)
+transformSoundStage1 = Clave()
+// Drop sound (Down)
+dropSoundStage1 = Freesound( 554710 ) // Footstep
+// NewSound
+newSoundStage1 = Freesound( 446930 ) // Sigh
+// Eliminated Sound
+eliminatedSoundStage1 = Freesound( 447699 ) // Glass
+// Gameover sound
+gameOverSound = Freesound( 257624 )
+// Level 3 Samples
+level3Bird = Freesound( 416529 )
+// Level 5 Samples
+level5Can = Freesound( 523322 )
+level5Water = Freesound( 336386 )
+level5Seagull = Freesound( 510917 )
+// Variable setop
 var input = "Hello World";
 let command = false;
 var continued = false;
@@ -30,6 +130,10 @@ var num = 0;
 var eliminate = 0;
 var count = 0;
 var changeColor = false;
+var gameOverTrigger = false;
+var stage = 1;
+var moveSwitch = 1;
+var randomNotes = 0;
 // Introduce a Websocket to control
 const socket = new WebSocket("ws://localhost:13001")
 socket.addEventListener("open", (event) => {
@@ -40,10 +144,38 @@ socket.addEventListener("message", (event) => {
   if (input != 5){
     command = true;
     if (input > 5 & input <= 15){
-      hatTransform.trigger();
+      if (stage == 1){
+        transformSoundStage1.trigger()
+        if (moveSwitch == 4){
+          moveSwitch = 1;
+        }
+        else moveSwitch += 1;
+      }
+      else{
+        randomNotes = random(-10, 10)
+        Synth('bass.hollow', { decay:.5, gain:.1 })
+          .connect( verb, 0.5 )
+          .note( randomNotes )
+      }
+    }
+    else if (input > 15 & input <= 25){
+      dropSoundStage1.trigger();
     }
     else{
-      kickMove.trigger();
+      if (stage <= 2){
+        randomNotes = random(-3, 5);
+        if (moveSwitch == 1) moveSoundStage1Change1.note(randomNotes);
+        if (moveSwitch == 2) moveSoundStage1Change2.note(randomNotes);
+        if (moveSwitch == 3) moveSoundStage1Change3.note(randomNotes);
+        if (moveSwitch == 4) moveSoundStage1Change4.note(randomNotes);
+      }
+      else{
+        randomNotes = random(-10, 10)
+        Monosynth('arpy', { gain:1, octave: -1 })
+          .connect( delay, .2 )
+          .connect( verb, 1 )
+          .note(randomNotes)  
+      }
     }
   }
 })
@@ -142,11 +274,16 @@ Tetris = class {
     }
     // Update level/rows/difficulty
     this.level += floor(this.rowsCompleted / this.rowsPerLevel);
+    stage = this.level;
     this.rowsCompleted %= this.rowsPerLevel;
     this.timer.duration = ceil(800 / sqrt(this.level));
     // Game over check
     this.gameOver = this.tGrid.collision(0, 0);
     if (this.gameOver) {
+      if (!gameOverTrigger) {
+        gameOverSound.trigger(1)
+        gameOverTrigger = true;
+      }
       return;
     }
     // Apply user input: transforms
@@ -160,7 +297,14 @@ Tetris = class {
           this.tGrid.sy++;
         }
       } else {
-        claveNew.trigger();
+        if (stage == 1) newSoundStage1.trigger(1);
+        else if (stage > 1){
+          randomNotes = random(-10, 10);
+          FM[3]( 'perc', {gain:1})
+            .connect( verb, 1 )
+            .spread(.9)
+            .note(randomNotes)
+        }
         this.tGrid.splatShape();
         eliminate = 0;
         eliminate += this.tGrid.updateRows();
@@ -177,9 +321,6 @@ Tetris = class {
     this.tx = this.ty = 0;
   }
   display(canvas) {
-    // TODO: Add more visualizations/particle effects
-    // TODO: Change the entire theme of the game (Filter)
-    // TODO: Find ways to control the visualization in performance (Only possible controlling the background)
     var off, x, y, w, h, cell;
     var canvasW = canvas.width;
     var canvasH = canvas.height;
@@ -191,12 +332,11 @@ Tetris = class {
     h = this.tGrid.ny * cell;
     x = parseInt((canvasW - w) / 2.0);
     y = parseInt((canvasH - h) / 2.0);
-    // TODO
     if (changeColor){
       for (var j = 0; j < pallette.length; j++){
         for (var i = 0; i < 3; i++){
           if (pallette[j][i] > 10){
-            pallette[j][i] = pallette[j][i]-5;
+            pallette[j][i] = pallette[j][i]-8;
           }
         }
       }
@@ -209,14 +349,14 @@ Tetris = class {
     {
       var _w = (x - off)/2;
       var _h = (canvasH - off)/2;
-      var _y = off*8;
-      var _x = off*7 + x + w;
+      var _y = off + _h/2;
+      var _x = off + x + w + _w/2;
       this.displayNextShape(canvas, _x, _y, _w, _h);
     }
     // Came level, ...
     {
-      var ty = canvasH / 2 - 400;
-      var tx1 = x + w + x / 2;
+      var ty = canvasH / 2 - 300;
+      var tx1 = x + w + x / 2 + 20;
       var txtLevel = "LEVEL " + this.level;
       var txtProgress = "ROW " + this.rowsCompleted + "/" + this.rowsPerLevel;
       var txtShapes = "SHAPE " + this.shapesCount;
@@ -243,14 +383,6 @@ Tetris = class {
       if (fade < 0) fadeAmount = 10;
       if (fade > 255) fadeAmount = -5;   
       fade += fadeAmount; 
-      if (count == 1){
-      }
-      else if (count == 2){
-      }
-      else if (count == 3){
-      }
-      else if (count == 4){
-      }
     }
     if (fade < 0) {
       num = int(random(0, 10));
@@ -261,7 +393,7 @@ Tetris = class {
     if (this.gameOver) txtGameStatus = "GAME OVER";
     if (this.pause) txtGameStatus = "PAUSE";
     if (txtGameStatus !== undefined) {
-      canvas.textSize(100);
+      canvas.textSize(65);
       canvas.textAlign(CENTER, CENTER);
       canvas.noStroke();
       canvas.fill(0, 0, 0);
@@ -269,7 +401,7 @@ Tetris = class {
       canvas.fill(255, 224, 0);
       canvas.text(txtGameStatus, canvasW / 2, canvasH / 2);
       if (this.gameOver){
-        canvas.textSize(50);
+        canvas.textSize(30);
         if (keyPressLeft || giveup){
           // TOD: Play sound
           giveup = true;
@@ -277,7 +409,7 @@ Tetris = class {
           canvas.fill(255, 224, 0);
         }
         else canvas.fill(0);
-        canvas.text("Give up?", canvasW/2 - 200, canvasH/2 + 300);
+        canvas.text("Give up?", canvasW/2 - 130, canvasH/2 + 300);
         if (keyPressRight || continued){
           // TOD: Play sound
           continued = true;
@@ -285,7 +417,7 @@ Tetris = class {
           canvas.fill(255, 224, 0);
         }
         else canvas.fill(0);
-        canvas.text("Continue?", canvasW/2 + 200, canvasH/2 + 300);
+        canvas.text("Continue?", canvasW/2 + 130, canvasH/2 + 300);
         if (continued && keyPressUp){
           // Game restart at current level
           this.tGrid.clearGrid();
@@ -294,6 +426,7 @@ Tetris = class {
           this.gameOver = false;
           this.spawn = true;
           this.rotate = false;
+          gameOverTrigger = false;
         }
       }
     }
@@ -533,7 +666,32 @@ TGrid = class{
       for (var gx = 0; gx < this.nx; gx++) {
         this.grid[gx] = 0;
       }
-      clapEliminated.trigger();
+      if (stage == 1){
+        eliminatedSoundStage1.trigger(1);
+      }
+      if (stage > 1){
+        Clap().trigger()
+        if (count == 1){
+          Synth('blank', { waveform:'pwm', pulsewidth: .3})
+            .connect( verb, 1 )
+            .note( -5 )
+        }
+        else if (count == 2){
+          Synth('blank', { waveform:'pwm', pulsewidth: .3})
+            .connect( verb, 1 )
+            .note( 0 )
+        }
+        else if (count == 3){
+          Synth('blank', { waveform:'pwm', pulsewidth: .3})
+            .connect( verb, 1 )
+            .note( 5 )
+        }
+        else if (count == 4){
+          Synth('blank', { waveform:'pwm', pulsewidth: .3})
+            .connect( verb, 1 )
+            .note( 10 )
+        }
+      }
     }
     return rows;
   }
@@ -590,165 +748,3 @@ draw = function() {
     this.tetris.display(this);
   }
 }
-
-
-// Configure
-hatTransform.trigger();
-kickMove.trigger();
-claveNew.trigger();
-clapEliminated.trigger();
-this.tetris.pause = true;
-this.tetris.pause = false;
-this.tetris.restart = true;
-
-solid().out(o0)
-
-// Colorful mouse
-osc(8,-0.5, 1).color(-1.5, -1.5, -1.5).blend(o0)
-  .rotate(-0.5, -0.5)
-  .modulate(shape(4)
-            .rotate(3, 0.5)
-            .scale(2)
-            .repeatX(2, 2)
-            .modulate(o0, () => mouse.x * 0.0005)
-            .repeatY(2, 2)).out(o0)
-
-solid().out(o0)
-
-// Dark chaos
-voronoi(350,0.15)
-  	.modulateScale(osc(50).rotate(Math.sin(time)),.5)
-  	.thresh(.8)
-.scale(()=>a.fft[3]-8).color(1,1,1)
-	.modulateRotate(osc(),.4)
-  	.diff(src(o0).scale(1.8))
-	.modulateScale(osc(2).modulateRotate(o0,.74))
-	.diff(src(o0).rotate([-.012,.01,-.002,0]).scrollY(0,[-1/199800,0].fast(0.7)))
-	.out()
-
-solid().out(o0)
-
-// Colorful strange
-osc(23,.3,.8).color(2,1,6)
-  .mult(voronoi(350,0.15)
-        .modulateScale(osc(50)
-                       .rotate(Math.sin(time)),.5)
-        .thresh(.1,.2)
-        .rotate(1,-0.2))
-  .modulateRotate(osc(42,.1)
-                  .pixelate(150,150)
-                  .blend(o0,.8), .22)
-  .out(o0)
-
-solid().out(o0)
-
-// Slow Colorful
-osc(20, 0.03, 1.7)
-  .kaleid()
-  .mult(osc(20, 0.001, 0)
-                                 .rotate(1.58))
-  .blend(o0, 0.94)
-  .modulateScale(osc(10, 0),-0.03)
-  .scale(0.8, () => (1.05 + 0.1 * Math.sin(0.05*time)))
-  .out(o0)
-
-solid().out(o0)
-
-// Green and red Tornado
-src(o0)
-	.posterize(2, 2)
-	.shift(1 / 8, 1 / 4, 1 / 2)
-	.colorama(3)
-	.contrast(3)
-	.saturate(1.01)
-	.brightness(.01)
-	.modulateHue(src(o0)
-		.scale(1.01), 2)
-	.layer(osc(1)
-		.scale("st.y-st.x", "st.x-st.y", .01)
-		.scale(10, .01)
-		.rotate(.1, .1)
-		.mask(osc(1)
-			.scale("st.y-st.x", "st.x-st.y", .01)
-			.scale(10, .01)
-			.rotate(-.1, -.1)))
-	.invert("asin(st.x)*acos(st.y)")
-	.out();
-
-solid().out(o0)
-
-// Strange dark universe
-const pi = () => Math.random(Math.PI) * 25;
-s0.initVideo("https://media1.giphy.com/media/fvCoIEB8YtKghURZcA/giphy.mp4"); 
-// https://media1.giphy.com/media/fvCoIEB8YtKghURZcA/giphy.mp4 
-// https://media3.giphy.com/media/DkleR7V8RMtrim0cH5/giphy.mp4
-src(s0)
-  .modulatePixelate(
-    osc(100,-0.01245,1)
-      .pixelate(pi, pi)
-      .scrollX(() => Math.random(10)))
-  .blend(s0)
-  .out(o0);
-
-solid().out(o0)
-
-// Strange dark blue red flames
-n = 8
-a = () => shape(4,0.25,0.009).rotate(()=>time/-40).repeat(n,n)
-a().add(a().scrollX(0.5/n).scrollY(0.5/n),1).modulate(o1,0.1)
-  .modulate(src(o1).color(10,10).add(solid(-14,-14)).rotate(()=>time/40),0.005)
-  .add(src(o1).scrollY(0.012,0.02),0.5).out(o1)
-src(o1).colorama(1.2).posterize(4).saturate(0.7).contrast(6).mult(solid(),0.15).out(o0)
-
-solid().out(o0)
-
-// Super fast colorful triangles
-osc(100,-0.01245,1).pixelate(50).kaleid(()=>(Math.sin(time/8)*9+3)).rotate(0,0.125)
-.modulateRotate(shape(3).scale(()=>(Math.cos(time)*2))
-                .rotate(0,-0.25))
-  .diff(src(o0).brightness(0.3))
-  .out()
-
-solid().out(o0)
-
-// Super light slow boxes
-osc(20, 0.1, 0).color(0, 1, 2).rotate(1.57/2).out(o1)
-osc(30, 0.01, 0).color(2, 0.7, 1).modulate(o1, 0).add(o1,1)
-  .modulatePixelate(o1,1,10).out(o0)
-
-solid().out(o0)
-
-// Dark lights glowing fast
-shape([4,5,6].fast(0.1).smooth(1),0.000001,[0.2,0.7].smooth(1))
-.color(0.2,0.4,0.3)
-.scrollX(()=>Math.sin(time*0.27))
-.add(
-  shape([4,5,6].fast(0.1).smooth(1),0.000001,[0.2,0.7,0.5,0.3].smooth(1))
-  .color(0.6,0.2,0.5)
-  .scrollY(0.35)
-  .scrollX(()=>Math.sin(time*0.33)))
-.add(
-  shape([4,5,6].fast(0.1).smooth(1),0.000001,[0.2,0.7,0.3].smooth(1))
-  .color(0.2,0.4,0.6)
-  .scrollY(-0.35)
-  .scrollX(()=>Math.sin(time*0.41)*-1))
-.add(
-      src(o0).shift(0.001,0.01,0.001)
-      .scrollX([0.05,-0.05].fast(0.1).smooth(1))
-      .scale([1.05,0.9].fast(0.3).smooth(1),[1.05,0.9,1].fast(0.29).smooth(1))
-      ,0.85)
-.modulate(voronoi(10,2,2))
-.out()
-
-solid().out(o0)
-
-// Slow white dark snow
-voronoi(50,1)
-  .luma(0.5).add(shape(1,1).luma(1))
-  .modulate(osc(-1000,-1)
-            .modulate(osc().luma()))
-  .blend(o0)
-  .blend(o0)
-  .blend(o0)
-  .blend(o0)
-  .out()

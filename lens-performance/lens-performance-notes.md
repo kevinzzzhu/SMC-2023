@@ -35,6 +35,7 @@ The structure of the performance can be broken down into the following stages:
 **Stage 3** - *Dawn*: As the game progresses to the second and third levels, the sound will gradually amplify and increase. A new theme will be introduced, and the overall brightness will increase. The theme becomes brighter, the sound layers increase, and the speed becomes faster.
 
 **Stage N** - *Colourful World*: Every one level, the theme will switch to different kinds of emotions and colours. There will be a template and the group members can start improvising, making their own changes to the arranged parts that can be modified.
+( What I chose to present is Forest and Sea)
 
 **Stage N+1** - *"1"*: After more than 5 minutes, the player can slowly stack the Blocks higher and approach failure, and finally choose to end the game. With the sound of the game ending, the performance ends.
 
@@ -113,4 +114,27 @@ It's worth noting that if the Blocks are accidentally stacked high during the pe
 19. P5.JS library. Retrieved from: https://p5js.org/
 
 20. Taras Chernus. 2018. person covering his eyes wallpaper. Unsplash License. Retrieved from: https://unsplash.com/photos/rWkpNxqE_rM
+
+21. LWM Music. 2017. Sunday Night Synthesis S03E04 - Filtered Noise & Wave Sounds in Pure Data. Retrieved from: https://www.youtube.com/watch?v=zal9oksmBWo
+
+22. AlbertoZ. 2007. Sea waves ambient generator. Retrieved from: https://forum.pdpatchrepo.info/topic/873/sea-waves-ambient-generator
+
+23. obiwannabe. 2007. Synthesize heartbeat. Retrieved from: https://forum.pdpatchrepo.info/topic/1053/synthesize-heartbeat/3
+
+24. Lydmakeren. 2020. Seagulls_short.wav. Retrieved from: https://freesound.org/people/Lydmakeren/sounds/510917/
+
+25. Reitannav. 2014. fluttershy oh... my....wav. Retrieved from: https://freesound.org/people/Reitanna/sounds/241218/
+
+26. MarviinR. 2020. opening beer can.flac. Retrieved from: https://freesound.org/people/MarviinR/sounds/523322/
+
+27. Robinhood76. 2014. 05530 metal suspense noise.wav. Retrieved from: https://freesound.org/people/Robinhood76/sounds/257624/
+
+28. Anthousai. 2018. glass - baby food jar - smashed on concrete.wav. Retrieved from: https://freesound.org/people/Anthousai/sounds/447699/
+
+29. sofial1224. 2018. 20-Suspiro-consolidated.wav. Retrieved from: https://freesound.org/people/sofial1224/sounds/446930/
+
+30. EminYILDIRIM. 2021. Footstep Snow Single. Retrieved from: https://freesound.org/people/EminYILDIRIM/sounds/554710/
+
+31. InspectorJ. 2018. Bird Whistling, Single, Robin, A.wav. Retrieved from: https://freesound.org/people/InspectorJ/sounds/416529/
+
 
